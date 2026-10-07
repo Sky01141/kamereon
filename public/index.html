@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MIMICRY</title><link rel="stylesheet" href="style.css"></head>
+<body><div id="root">
+<section id="loading" class="scr on"><h1>MIMICRY</h1><p id="lmsg">LOADING...</p><div class="bar"><i></i></div><button id="retry" hidden>RECONNECT</button></section>
+<section id="title" class="scr"><h1>MIMICRY</h1><button id="b-start">GAME START</button><button id="b-how">HOW TO PLAY</button><button id="b-set">SETTINGS</button><button id="b-ann">ANNOUNCEMENT</button></section>
+<section id="setup" class="scr"><h2>PLAYER SETUP</h2><label>Player Name <input id="s-name" maxlength="16"></label><label>Player Color <input id="s-col" type="color" value="#39ff88"></label>
+<label>Character Style <select id="s-style"><option value="circle">Round</option><option value="square">Square</option></select></label><button id="s-ok">OK</button></section>
+<section id="modes" class="scr"><h2>SELECT MODE</h2><button id="m-quick">QUICK MATCH</button>
+<div class="row"><label>Max <input id="m-max" type="number" value="6" min="2" max="10"></label><label>Rounds <input id="m-rd" type="number" value="3" min="1" max="10"></label><button id="m-create">CREATE ROOM</button></div>
+<div class="row"><input id="m-code" placeholder="ROOM CODE" maxlength="5"><button id="m-join">JOIN</button></div><button id="m-back">BACK</button></section>
+<section id="lobby" class="scr"><h2>ROOM <b id="l-code"></b></h2><ul id="l-list"></ul><div class="row"><button id="l-ready">READY</button><button id="l-rep">REPORT</button><button id="l-leave">LEAVE</button></div></section>
+<section id="game" class="scr"><canvas id="cv"></canvas><div id="hud"></div>
+<div id="paint" hidden><canvas id="pc" width="160" height="160"></canvas>
+<div class="row"><input id="pcol" type="color" value="#39ff88"><input id="pcol2" type="color" value="#000000">
+<select id="ptool"><option value="brush">Brush</option><option value="erase">Eraser</option><option value="spoit">Spoit(paint)</option><option value="world">Spoit(world)</option></select>
+<select id="psize"><option value="1">1</option><option value="2">2</option></select></div>
+<label>Opacity <input id="pop" type="range" min="10" max="100" value="100"></label>
+<div class="row"><button id="pundo">Undo</button><button id="predo">Redo</button><button id="pclear">Clear</button><button id="pfill">Fill</button><button id="pstripe">Stripe</button><button id="pgrad">Grad</button></div>
+<div id="poses" class="row"></div></div></section>
+</div>
+<div id="log"></div>
+<div id="chat"><div id="cm"></div><input id="ci" maxlength="200" placeholder="Enter: chat"></div>
+<div id="toast"></div>
+<div class="ov" id="ov-how"><div><h2>HOW TO PLAY</h2><p>HIDER: HIDE phase中に背景色をスポイトして自分を塗り、ポーズを選んで場所に溶け込む。<br>SEEKER: SEARCH phaseで探し、怪しい所にカーソルを合わせて F / クリックでSCAN。外すと4秒使用不可。<br>操作: WASD移動 / Shift走る / Space ポーズ / E 足元の色を取得 / Enterでチャット</p><button class="x">CLOSE</button></div></div>
+<div class="ov" id="ov-set"><div><h2>SETTINGS</h2><div id="set-body"></div><button class="x">CLOSE</button></div></div>
+<div class="ov" id="ov-ann"><div><h2>ANNOUNCEMENT</h2><div id="ann-body"></div><button class="x">CLOSE</button></div></div>
+<div class="ov" id="ov-rep"><div><h2>REPORT PLAYER</h2><select id="rp-t"></select><select id="rp-r"><option>Cheating</option><option>Harassment</option><option>Exploit</option><option>Spam</option><option>Inappropriate Name</option><option>Other</option></select><div class="row"><button id="rp-ok">SEND</button><button class="x">CLOSE</button></div></div></div>
+<div class="ov" id="ov-ban"><div><h2 id="ban-t">BANNED</h2><p id="ban-m"></p></div></div>
+<div class="ov" id="ov-owner"><div id="owner-box"></div></div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/map.js"></script><script src="js/settings.js"></script><script src="js/network.js"></script><script src="js/paint.js"></script><script src="js/game.js"></script><script src="js/owner.js"></script><script src="js/main.js"></script>
+</body></html>
